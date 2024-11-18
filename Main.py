@@ -7,6 +7,7 @@ from itertools import combinations, combinations_with_replacement
 from itertools import accumulate
 from itertools import groupby
 import operator
+from itertools import count, cycle, repeat
 
 print("\nProduct finds the cartesian product of two lists. Must convert the result to a list in order to display it.")
 a = [1,2]
@@ -59,3 +60,25 @@ persons = [{'name': 'Tim', 'age': 25}, {'name': 'Dan', 'age': 25}, {'name': 'Lis
 group_obj = groupby(persons, key=lambda x: x['age'])
 for key, value in group_obj:
     print(key, list(value))
+
+print("\nThere are a few infinite iterators available. Basically functions that will loop through a for loop forever unless "
+      "there is a break condition.")
+print("\nCount() counts up from whatever the starting value was.")
+for index in count(10):
+    print(index)
+    if index == 50:
+        break
+
+print("\nCycle() will cycle through an iterable list forever unless there is a stop condition.")
+a = [1, 2, 3]
+loop = 0
+for index in cycle(a):
+    print(index)
+    loop += 1
+    if loop == 9:
+        break
+
+print("\nRepeat() will repeat a selected element forever, but a 2nd argument can be inputted as a stop condition of how "
+      "many times it will be repeated.")
+for index in repeat(1, 5):
+    print(index)
